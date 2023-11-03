@@ -1,0 +1,34 @@
+version: '3'
+services:
+    mysql_tcc:
+        image: mysql:latest
+        container_name: mysql_tcc
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: tcc
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data_tcc:/var/lib/mysql
+        networks:
+            - tcc-network
+
+    mysql_tcc_test:
+        image: mysql:latest
+        container_name: mysql_tcc_test
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: tcc_test
+        ports:
+            - "3307:3306"
+        volumes:
+            - mysql_data_tcc_test:/var/lib/mysql
+        networks:
+            - tcc-network
+
+networks:
+    tcc-network:
+
+volumes:
+    mysql_data_tcc:
+    mysql_data_tcc_test:

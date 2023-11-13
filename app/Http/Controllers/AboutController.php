@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AboutRequest;
 use App\Http\Resources\AboutResource;
-use App\UseCases\AboutDTO;
-use App\UseCases\AboutManager;
+use App\UseCases\About\AboutDTO;
+use App\UseCases\About\AboutManager;
 
 class AboutController extends Controller
 {

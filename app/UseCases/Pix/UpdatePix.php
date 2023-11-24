@@ -6,9 +6,9 @@ use App\Models\Pix;
 
 class UpdatePix
 {
-    public function execute(Pix $pix, PixDTO $data): Pix
+    public function execute(Pix $pix, PixDTO $pixDTO): Pix
     {
-        $pix->update($data->toArray());
+        $pix->update($pixDTO->toArray());
 
         return $pix;
     }

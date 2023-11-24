@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::put('/about', [\App\Http\Controllers\AboutController::class, 'update']);
+
+    Route::apiResource('/bank-details', \App\Http\Controllers\BankDetailsController::class)
+        ->except('index');
+
+    Route::apiResource('/pix', \App\Http\Controllers\PixController::class)
+        ->only('store', 'update', 'destroy');
+
+    Route::get('/me', [\App\Http\Controllers\UserController::class, 'me']);
 });
 
-Route::singleton('/about', \App\Http\Controllers\AboutController::class);
+Route::get('/about', [\App\Http\Controllers\AboutController::class, 'show']);
+
+Route::post('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
+Route::post('/register', [\App\Http\Controllers\UserController::class, 'register'])->name('register');

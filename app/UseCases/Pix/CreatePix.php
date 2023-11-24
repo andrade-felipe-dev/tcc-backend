@@ -8,6 +8,12 @@ class CreatePix
 {
     public  function execute(PixDTO $data): bool
     {
-        return app(Pix::class)->create($data->toArray());
+        $data = [
+            'type' => $data->type,
+            'value' => $data->value,
+            'id_bank_details' => $data->idBankDetails
+        ];
+
+        return !!app(Pix::class)->create($data);
     }
 }

@@ -22,7 +22,8 @@ class AddressFactory extends Factory
             'neighborhood' => $this->faker->text(),
             'city' => $this->faker->city(),
             'state' => $this->faker->randomLetter(2),
-            'postal_code' => $this->faker->postcode()
+            'postal_code' => $this->faker->postcode(),
+            'coordinates' => $this->faker->localCoordinates()
         ];
     }
 }

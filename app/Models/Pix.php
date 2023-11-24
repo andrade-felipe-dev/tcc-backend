@@ -12,6 +12,11 @@ class Pix extends Model
     protected $table = 'pixes';
 
     protected $fillable = [
-        'type', 'value'
+        'type', 'value', 'id_bank_details'
     ];
+
+    public function bankDetails()
+    {
+        return $this->belongsTo(BankDetails::class, 'id_bank_details', 'id');
+    }
 }

@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('pixes', function (Blueprint $table) {
-            $table->foreignId('bank_data_id')
-                ->constrained('bank_datas');
+            $table->foreignId('id_bank_details')
+                ->constrained('bank_details')
+                ->onDelete('cascade');
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropColumns('id_bank_data');
+        Schema::dropColumns('id_bank_details');
     }
 };

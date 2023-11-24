@@ -2,7 +2,6 @@
 
 namespace App\UseCases\Address;
 
-use App\Models\About;
 use App\Models\Address;
 
 class CreateAddress

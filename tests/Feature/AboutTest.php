@@ -5,11 +5,18 @@ namespace Tests\Feature;
 use App\Models\About;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Tests\ApiTestHelper;
 use Tests\TestCase;
 
 class AboutTest extends TestCase
 {
     use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->user = $this->authUser();
+    }
 
     public function test_should_be_update_description(): void
     {

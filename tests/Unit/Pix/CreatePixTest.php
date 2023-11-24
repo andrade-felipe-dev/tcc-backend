@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Pix;
 
+use App\Models\BankDetails;
 use App\Models\Pix;
 use App\UseCases\Pix\CreatePix;
 use App\UseCases\Pix\PixDTO;
@@ -11,17 +12,19 @@ class CreatePixTest extends TestCase
 {
     public function test_should_be_create_pix(): void
     {
-        $value = Pix::factory()->make();
-
-        $dto = PixDTO::from($value->toArray());
-
         $this->mock(Pix::class)
             ->expects('create')
             ->once()
             ->andReturnTrue();
 
-        $response = (new CreatePix())->execute($dto);
+        $data = [
+            'type' => 'celular',
+            'value' => '12334425234',
+            'idBankDetails' => 1
+        ];
 
-        $this->assertTrue($response);
+        $dto = PixDTO::from($data);
+        $result = (new CreatePix())->execute($dto);
+        $this->assertTrue($result);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\BankDetails;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -13,7 +14,8 @@ class PixFactory extends Factory
     {
         return [
             'type' => $this->faker->name(),
-            'value' => $this->faker->text()
+            'value' => $this->faker->text(),
+            'id_bank_details' => BankDetails::factory()->create()->id
         ];
     }
 }

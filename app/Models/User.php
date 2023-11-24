@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function matchesAsEntity()
+    {
+        return $this->hasMany(Matching::class, 'entidade_id');
+    }
+
+    public function matchesAsVoluntary()
+    {
+        return $this->hasMany(Matching::class, 'voluntario_id');
+    }
 }

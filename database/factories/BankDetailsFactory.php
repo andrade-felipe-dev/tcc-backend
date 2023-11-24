@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankData>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\BankDetails>
  */
-class BankDataFactory extends Factory
+class BankDetailsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,9 @@ class BankDataFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->text(),
+            'agency' => $this->faker->randomNumber(),
+            'account' => $this->faker->randomNumber(),
         ];
     }
 }

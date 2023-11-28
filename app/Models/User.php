@@ -45,11 +45,11 @@ class User extends Authenticatable
 
     public function matchesAsEntity()
     {
-        return $this->hasMany(Matching::class, 'entidade_id');
+        return $this->hasMany(Matching::class, 'entity_id');
     }
 
     public function matchesAsVoluntary()
     {
-        return $this->hasMany(Matching::class, 'voluntario_id');
+        return $this->hasMany(Matching::class, 'voluntary_id');
     }
 }

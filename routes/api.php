@@ -15,15 +15,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::put('/about', [\App\Http\Controllers\AboutController::class, 'update']);
 
     Route::apiResource('/bank-details', \App\Http\Controllers\BankDetailsController::class)
         ->except('index');
-
     Route::apiResource('/pix', \App\Http\Controllers\PixController::class)
         ->only('store', 'update', 'destroy');
+    Route::apiResource('/matching', App\Http\Controllers\MatchingController::class)
+        ->only('store', 'index');
 
     Route::get('/me', [\App\Http\Controllers\UserController::class, 'me']);
+
+    Route::put('/about', [\App\Http\Controllers\AboutController::class, 'update']);
 });
 
 Route::get('/about', [\App\Http\Controllers\AboutController::class, 'show']);

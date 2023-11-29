@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\EntityRule;
+use App\Rules\VoluntaryRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MatchingRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class MatchingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,8 +25,8 @@ class MatchingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'idVoluntary' => 'required|integer|exists:users,id',
-            'idEntity' => 'required|integer|exists:users,id'
+            'idVoluntary' => ['required','integer','exists:users,id', new VoluntaryRule()],
+            'idEntity' => ['required','integer','exists:users,id', new EntityRule()],
         ];
     }
 }

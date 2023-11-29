@@ -2,11 +2,11 @@
 
 namespace App\UseCases\User;
 
-enum ProfileUser: string
+enum ProfileUserENUM: string
 {
-    CASE ADMIN = "ADMIN";
-    case USER = "USER";
-    CASE ENTITY = "ENTITY";
+    const ADMIN = "ADMIN";
+    const USER = "USER";
+    const ENTITY = "ENTITY";
 
     public static function toArray(): array
     {

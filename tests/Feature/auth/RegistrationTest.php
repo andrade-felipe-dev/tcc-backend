@@ -12,12 +12,12 @@ class RegistrationTest extends TestCase
 
     public function test_a_user_can_register()
     {
-
         $this->postJson(route('register'),[
             'name' => "teste",
             'email' => 'teste@teste.com',
             'password' => '123456',
             'password_confirmation' => '123456',
+            'profile' => 'ADMIN'
         ])->assertCreated();
 
         $this->assertDatabaseHas('users',['name' => 'teste']);

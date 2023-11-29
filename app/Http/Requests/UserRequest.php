@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\UseCases\User\ProfileUser;
+use App\UseCases\User\ProfileUserENUM;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'email' => 'required|string|email|unique:users',
             'name' => 'required|string|min:3|max:255',
             'password' => 'required|string|min:6',
-            'profile' => ['required', 'string', Rule::in(ProfileUser::toArray())]
+            'profile' => ['required', 'string', Rule::in(ProfileUserENUM::toArray())]
         ];
     }
 }

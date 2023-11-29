@@ -12,7 +12,8 @@ class CreateUser
         app(User::class)->create([
             'email' => $dto->email,
             'name' => $dto->name,
-            'password' => Hash::make($dto->password)
+            'password' => Hash::make($dto->password),
+            'profile' => $dto->profile
         ]);
     }
 }

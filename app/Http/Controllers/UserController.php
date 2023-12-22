@@ -27,7 +27,6 @@ class UserController extends Controller
             ]);
         }
 
-
         return response()->json([
             'error' => 'Invalid credentials'
         ], 401);

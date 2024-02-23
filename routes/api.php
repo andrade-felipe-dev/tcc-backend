@@ -25,10 +25,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::get('/me', [\App\Http\Controllers\UserController::class, 'me']);
 
-    Route::put('/about', [\App\Http\Controllers\AboutController::class, 'update']);
 });
 
-Route::get('/about', [\App\Http\Controllers\AboutController::class, 'show']);
+Route::put('/about-me', [\App\Http\Controllers\AboutController::class, 'update']);
+Route::get('/about-me', [\App\Http\Controllers\AboutController::class, 'show']);
 
 Route::post('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
 Route::post('/register', [\App\Http\Controllers\UserController::class, 'register'])->name('register');

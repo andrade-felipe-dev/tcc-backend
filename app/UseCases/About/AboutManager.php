@@ -10,7 +10,7 @@ class AboutManager
 
     public  function __construct()
     {
-        $this->about = About::firstOrCreate();
+        $this->about = About::firstOrCreate([]);
     }
 
     public function getAbout()

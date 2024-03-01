@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::apiResource('/matching', App\Http\Controllers\MatchingController::class)
         ->only('store', 'index');
 
+    Route::apiResource('/category', \App\Http\Controllers\CategoryController::class);
+
     Route::get('/me', [\App\Http\Controllers\UserController::class, 'me']);
 
 });

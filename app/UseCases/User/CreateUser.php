@@ -13,7 +13,7 @@ class CreateUser
             'email' => $dto->email,
             'name' => $dto->name,
             'password' => Hash::make($dto->password),
-            'profile' => $dto->profile
+            'profile' => $dto->profile,
         ]);
     }
 }

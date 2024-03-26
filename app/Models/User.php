@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -21,7 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'profile'
+        'profile',
+        'active'
     ];
 
     /**
@@ -44,13 +47,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function matchesAsEntity()
+    public function matchesAsEntity(): HasMany
     {
         return $this->hasMany(Matching::class, 'entity_id');
     }
 
-    public function matchesAsVoluntary()
+    public function matchesAsVoluntary(): HasMany
     {
         return $this->hasMany(Matching::class, 'voluntary_id');
+    }
+
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class, 'user_id','id');
     }
 }
